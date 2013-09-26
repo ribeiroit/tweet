@@ -8,6 +8,19 @@ install
 
 	sudo easy_install flask flask-security flask_mongoengine flask-script
 	
+configure
+=========
+
+To use the system we need to create a new user, so run:
+
+	python manage.py shell
+	from tweet.models import *
+	user = User(name='My name',username='me@mymail.com')
+	user.password = user.render_pw('password')
+	user.save()
+
+Type CTRL + D to get out from shell.
+
 run
 ===
 
