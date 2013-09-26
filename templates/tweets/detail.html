@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block page_header %}
+  <div class="page-header">
+    <h1>{{ tweet.body }}</h1>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <p>{{ tweet.body }}<p>
+  <p><strong>{{ tweet.author }}</strong> <small>em {{ tweet.created_at.strftime('%H:%M %d/%m/%Y') }}</small></p>
+
+{% endblock %}

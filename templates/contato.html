@@ -1,0 +1,20 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Contato</h1>
+<form action="" method="post" name="login">
+    {{form.hidden_tag()}}
+    {% if form.errors %}
+    <p>Por favor preencha os campos:</p>
+    <ul class=errors>
+    {% for error in form.errors %}
+      <li>{{ error }} - {{ form.errors[error] }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+    <p>Seu email: {{form.email}}</p>
+    <p>Mensagem: {{form.mensagem}}</p>
+    <p><input type="submit" value="Enviar"></p>
+</form>
+{% endblock %}

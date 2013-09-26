@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if form.errors %}
+    <p>Por favor preencha os campos:</p>
+    <ul class=errors>
+    {% for error in form.errors %}
+      <li>{{ form.errors[error] }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+  <form action="{{ url_for('tweet_add') }}" method="post" name="tweet" id="tweet">
+    {{form.hidden_tag()}}
+    <div class="col-lg-6">
+    <div class="input-group">
+      {{form.message(style="width:90%",class='form-control')}}
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" onclick="$('#tweet').submit();">Post</button>
+      </span>
+    </div>
+  </div>
+  </form>
+
+    {% for tweet in tweets %}
+      <div class="highlight">
+        <p>{{ tweet.body|truncate(100) }}</p>
+        <p><small>
+          {{ tweet.created_at.strftime('%H:%M %Y-%m-%d') }} |
+          {{ tweet.author }}
+        </small></p>
+      </div>
+    {% endfor %}
+{% endblock %}
